@@ -12,8 +12,8 @@
         <!--Tab Bar Controller-->
         <scene sceneID="oi5-Ue-kMD">
             <objects>
-                <tabBarController id="jz2-xS-eig" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backgroundImage="homekit" catalog="system" id="fBz-Ih-CPq">
+                <tabBarController storyboardIdentifier="TabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jz2-xS-eig" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" restorationIdentifier="TabBar" insetsLayoutMarginsFromSafeArea="NO" backgroundImage="homekit" catalog="system" id="fBz-Ih-CPq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -413,7 +413,7 @@
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                 <state key="normal" title="Login"/>
                                                 <connections>
-                                                    <action selector="onLogin:" destination="UWg-lQ-3kB" eventType="touchUpInside" id="KCq-ET-DpC"/>
+                                                    <action selector="onLogin:" destination="UWg-lQ-3kB" eventType="touchUpInside" id="dFC-Dx-DAt"/>
                                                 </connections>
                                             </button>
                                         </subviews>
