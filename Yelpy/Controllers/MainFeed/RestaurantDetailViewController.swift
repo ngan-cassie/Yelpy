@@ -12,7 +12,7 @@ import AlamofireImage
 
 class RestaurantDetailViewController: UIViewController {
 
-    // ––––– TODO: Configure outlets
+    // Configure outlets
     // NOTE: Make sure to set images to "Content Mode: Aspect Fill" on the
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
