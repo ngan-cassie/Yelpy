@@ -12,6 +12,7 @@ import UIKit
 class Restaurant {
     
     // ––––– Lab 2 TODO: Establish Properties –––––
+    var id: String
     var imageURL: URL?
     var url: URL?
     var name: String
@@ -23,6 +24,7 @@ class Restaurant {
 
     // ––––– Lab 2 TODO: Complete initializer for Restaurant
     init(dict: [String: Any]) {
+        id = dict["id"] as! String
         imageURL = URL(string: dict["image_url"] as! String)
         name = dict["name"] as! String
         rating = dict["rating"] as! Double

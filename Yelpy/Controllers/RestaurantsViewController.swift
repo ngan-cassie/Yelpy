@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireImage
 
+
 class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     // Outlets
@@ -17,13 +18,11 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
     // Initiliazers
     var restaurantsArray: [Restaurant] = []
     
-    // ––––– TODO: Add Search Bar Outlet + Variable for filtered Results
+    // Add Search Bar Outlet + Variable for filtered Results
     @IBOutlet weak var searchBar: UISearchBar!
     var filteredRestaurants: [Restaurant] = []
     
     
-    
-    // ––––– TODO: Add searchController configurations
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,10 +36,11 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Get Data from API
         getAPIData()
+
     }
     
     
-    // ––––– TODO: Update API results + restaurantsArray Variable + filteredRestaurants
+    // Update API results + restaurantsArray Variable + filteredRestaurants
     func getAPIData() {
         API.getRestaurants() { (restaurants) in
             guard let restaurants = restaurants else {
@@ -52,11 +52,8 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
             self.tableView.rowHeight = 150
         }
     }
-
 }
 
-
-// ––––– TODO: Pass restaurant to details view controller through segue
 // ––––– TableView Functionality –––––
 extension RestaurantsViewController {
     
@@ -65,7 +62,7 @@ extension RestaurantsViewController {
         return filteredRestaurants.count
     }
     
-    // ––––– TODO: Configure cell to use [Movie] array instead of [[String:Any]] and Filtered Array
+    // Configure cell to use [Movie] array instead of [[String:Any]] and Filtered Array
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create Restaurant Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as! RestaurantCell
@@ -75,7 +72,7 @@ extension RestaurantsViewController {
         return cell
     }
     
-    // ––––– TODO: Send restaurant object to DetailViewController
+    // Send restaurant object to DetailViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! UITableViewCell
         if let indexPath = tableView.indexPath(for: cell) {
@@ -89,7 +86,7 @@ extension RestaurantsViewController {
 }
 
 
-// ––––– TODO: Add protocol + Functionality for Searching
+// Add protocol + Functionality for Searching
 // UISearchResultsUpdating informs the class of text changes
 // happening in the UISearchBar
 extension RestaurantsViewController: UISearchBarDelegate {

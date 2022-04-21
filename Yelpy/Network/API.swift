@@ -10,11 +10,16 @@ import Foundation
 
 
 struct API {
+ 
     
+//    static func getRestaurantDetail(id, completion: @escaping (RestaurantDetail?) -> Void) {
+//        let apikey = "NYOn9TZoOEZTMbC8582zqD1kltK1A3xmm1eqFwa9nDGZAVDCu6v9B62J2HqeorcB7285hahhcFQ5ty5rfw816nWBDtAIbTC-5kE4zO4qcJpKVDasRBaWGgXkUdtOYnYx"
+//        let url = URL(string: "https://api.yelp.com/v3/businesses/\(id)")!
+//        )
+//    }
 
     static func getRestaurants(completion: @escaping ([Restaurant]?) -> Void) {
-        
-        // ––––– TODO: Add your own API key!
+ 
         let apikey = "NYOn9TZoOEZTMbC8582zqD1kltK1A3xmm1eqFwa9nDGZAVDCu6v9B62J2HqeorcB7285hahhcFQ5ty5rfw816nWBDtAIbTC-5kE4zO4qcJpKVDasRBaWGgXkUdtOYnYx"
         
         // Coordinates for San Francisco
