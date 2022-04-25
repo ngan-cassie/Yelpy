@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ChatViewController: UITableViewController {
+class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataSource  {
 
     
     @IBOutlet weak var chatView: UITableView!
@@ -35,18 +35,32 @@ class ChatViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    @IBAction func onSend(_ sender: Any) {
+        let chatMessage = PFObject(className: "Message")
+        chatMessage["text"] = messageTextField.text ?? ""
+        chatMessage.saveInBackground { (success, error) in
+           if success {
+              print("The message was saved!")
+               self.messageTextField.text = ""
+           } else if let error = error {
+              print("Problem saving message: \(error.localizedDescription)")
+           }
+        }
     }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // NOTE: Don't worry about the error, please follow the lab!
         return messages.count
     }
+    
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
 
         let message = messages[indexPath.row]
@@ -86,7 +100,7 @@ class ChatViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

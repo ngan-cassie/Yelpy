@@ -238,10 +238,10 @@
             </objects>
             <point key="canvasLocation" x="-803" y="666"/>
         </scene>
-        <!--Yelpy Chat-->
+        <!--ChatViewController-->
         <scene sceneID="yiR-SE-dcJ">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" id="Dxm-jw-v4q" customClass="ChatViewController" customModule="Yelpy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" title="ChatViewController" id="Dxm-jw-v4q" customClass="ChatViewController" customModule="Yelpy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eWy-Ck-i1g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -263,6 +263,9 @@
                                         <state key="normal" title="Send">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onSend:" destination="Dxm-jw-v4q" eventType="touchUpInside" id="SPQ-wp-1ud"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
