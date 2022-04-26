@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class Restaurant {
     
@@ -20,9 +21,10 @@ class Restaurant {
     var phone: String
     var rating: Double
     var reviews: Int
+    var latitude: Double
+    var longitude: Double
 
 
-    // ––––– Lab 2 TODO: Complete initializer for Restaurant
     init(dict: [String: Any]) {
         id = dict["id"] as! String
         imageURL = URL(string: dict["image_url"] as! String)
@@ -32,6 +34,9 @@ class Restaurant {
         phone = dict["display_phone"] as! String
         url = URL(string: dict["url"] as! String)
         mainCategory = Restaurant.getMainCategory(dict: dict)
+        let coordinates = Restaurant.getCoordinates(dict: dict)
+        latitude = coordinates["latitude"]!
+        longitude = coordinates["longitude"]!
         
     }
     
@@ -41,5 +46,9 @@ class Restaurant {
         return categories[0]["title"] as! String
     }
 
+    static func getCoordinates(dict: [String:Any]) -> [String:Double] {
+        let coordinates = dict["coordinates"] as! [String: Double]
+        return coordinates
+    }
     
 }

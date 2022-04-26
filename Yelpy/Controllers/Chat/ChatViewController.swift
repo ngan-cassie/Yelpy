@@ -29,7 +29,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         chatView.delegate = self
         
         chatView.rowHeight = UITableView.automaticDimension
-        chatView.estimatedRowHeight = 50
+        chatView.estimatedRowHeight = 100
         
         // Reload messages every second (interval of 1 second)
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loadChats), userInfo: nil, repeats: true)
@@ -93,11 +93,16 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         if let user = message["user"] as? PFUser {
             cell.usernameLabel.text = user.username
         } else {
-            cell.usernameLabel.text = "?"
+            cell.usernameLabel.text = "Random"
         }
 
         return cell
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            var height:CGFloat = CGFloat()
+            height = 110
+            return height
+        }
 
 
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6363A5772817546B005694BD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6363A5762817546B005694BD /* ChatViewController.swift */; };
+		6363A5792817B8D8005694BD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6363A5782817B8D8005694BD /* MapKit.framework */; };
 		63D88E64280D216100021F98 /* load-ani.json in Resources */ = {isa = PBXBuildFile; fileRef = 63D88E63280D216100021F98 /* load-ani.json */; };
 		63D88E66281104F700021F98 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D88E65281104F700021F98 /* ChatCell.swift */; };
 		63D88E6C28111B0500021F98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D88E6B28111B0500021F98 /* LoginViewController.swift */; };
@@ -30,6 +31,7 @@
 		4ED4C73FD51FDFC62216E5DE /* Pods-Yelpy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelpy.debug.xcconfig"; path = "Target Support Files/Pods-Yelpy/Pods-Yelpy.debug.xcconfig"; sourceTree = "<group>"; };
 		4F45387EF0BCD4FD0EAD369F /* Pods_Yelpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6363A5762817546B005694BD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		6363A5782817B8D8005694BD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		63D88E63280D216100021F98 /* load-ani.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "load-ani.json"; sourceTree = "<group>"; };
 		63D88E65281104F700021F98 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = SOURCE_ROOT; };
 		63D88E6B28111B0500021F98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Yelpy/Storyboards/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6363A5792817B8D8005694BD /* MapKit.framework in Frameworks */,
 				DEB0D3CBF2C6E48DC3500274 /* Pods_Yelpy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +95,7 @@
 		7D8BA013843B8AF0BF0FE308 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6363A5782817B8D8005694BD /* MapKit.framework */,
 				4F45387EF0BCD4FD0EAD369F /* Pods_Yelpy.framework */,
 			);
 			name = Frameworks;
@@ -391,6 +395,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -445,6 +450,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
