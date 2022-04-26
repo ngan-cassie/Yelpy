@@ -284,24 +284,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhs-u6-E8k">
-                                                    <rect key="frame" x="16" y="33" width="414" height="19.5"/>
+                                                    <rect key="frame" x="30" y="37" width="400" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1w-7y-6t1">
-                                                    <rect key="frame" x="16" y="8" width="382" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="30" y="8" width="368" height="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="j1w-7y-6t1" secondAttribute="trailing" constant="16" id="Ag7-qk-zhf"/>
-                                                <constraint firstItem="Hhs-u6-E8k" firstAttribute="top" secondItem="j1w-7y-6t1" secondAttribute="bottom" constant="8" id="CA7-2K-Vfx"/>
-                                                <constraint firstItem="Hhs-u6-E8k" firstAttribute="leading" secondItem="Xdx-wP-IBE" secondAttribute="leading" constant="16" id="Tny-ca-FWV"/>
+                                                <constraint firstItem="Hhs-u6-E8k" firstAttribute="top" secondItem="j1w-7y-6t1" secondAttribute="bottom" constant="12" id="CA7-2K-Vfx"/>
+                                                <constraint firstItem="Hhs-u6-E8k" firstAttribute="leading" secondItem="Xdx-wP-IBE" secondAttribute="leading" constant="30" id="Tny-ca-FWV"/>
                                                 <constraint firstAttribute="trailing" secondItem="Hhs-u6-E8k" secondAttribute="trailing" constant="-16" id="e6o-Yq-agO"/>
-                                                <constraint firstItem="j1w-7y-6t1" firstAttribute="leading" secondItem="Xdx-wP-IBE" secondAttribute="leading" constant="16" id="evU-rM-I1U"/>
+                                                <constraint firstItem="j1w-7y-6t1" firstAttribute="leading" secondItem="Xdx-wP-IBE" secondAttribute="leading" constant="30" id="evU-rM-I1U"/>
                                                 <constraint firstItem="j1w-7y-6t1" firstAttribute="top" secondItem="Xdx-wP-IBE" secondAttribute="top" constant="8" id="iOu-lx-MQC"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Hhs-u6-E8k" secondAttribute="bottom" constant="8" id="tum-T6-Pau"/>
                                             </constraints>
@@ -327,7 +327,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Yelpy Chat" id="YyX-ES-IMn">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Qgt-4p-OEb"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Qgt-4p-OEb">
+                            <connections>
+                                <action selector="onLogout:" destination="Dxm-jw-v4q" id="Vgp-7V-h4z"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="chatView" destination="Lcp-ke-rbe" id="RNB-DU-mlQ"/>

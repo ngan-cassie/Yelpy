@@ -17,10 +17,10 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var messageTextField: UITextField!
     
     // CREATE ARRAY FOR MESSAGES
-    var messages: [[String: Any]] = []
+    var messages: [PFObject] = []
     
     // CREATE CHAT MESSAGE OBJECT
-    
+    let chatMessage = PFObject(className: "Message")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +31,31 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         chatView.rowHeight = UITableView.automaticDimension
         chatView.estimatedRowHeight = 50
         
-        // Lab 5 TODO: Reload messages every second (interval of 1 second)
+        // Reload messages every second (interval of 1 second)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loadChats), userInfo: nil, repeats: true)
+        chatView.reloadData()
+    }
+    
+    @objc func loadChats() {
+        let query = PFQuery(className: "Message")
+        query.includeKeys(["user","text"])
+        query.limit = 20
+        query.findObjectsInBackground{
+            (messages, error) in
+            
+            if let messages = messages {
+                self.messages = messages
+                self.chatView.reloadData()
+            } else {
+                print(error!.localizedDescription)            }
+        }
     }
 
-    // MARK: - Table view data source
-    
     @IBAction func onSend(_ sender: Any) {
+        if messageTextField.text!.isEmpty == false {
         let chatMessage = PFObject(className: "Message")
         chatMessage["text"] = messageTextField.text ?? ""
+        chatMessage["user"] = PFUser.current()!
         chatMessage.saveInBackground { (success, error) in
            if success {
               print("The message was saved!")
@@ -47,11 +64,17 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
               print("Problem saving message: \(error.localizedDescription)")
            }
         }
+        } else {
+            print("\nMessage cannot be empty\n")
+        }
+        
     }
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
+    
+    @IBAction func onLogout(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
+    }
+    
+
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // NOTE: Don't worry about the error, please follow the lab!
@@ -61,7 +84,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
 
         let message = messages[indexPath.row]
         cell.messageLabel.text = message["text"] as? String
@@ -72,61 +95,9 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         } else {
             cell.usernameLabel.text = "?"
         }
-        // BONUS: ADD avatarImage TO CELL STORYBOARD AND CONNECT TO ChatCell
-//        let baseURL = "https://api.adorable.io/avatars/"
-//        let imageSize = 20
-//        let avatarURL = URL(string: baseURL+"\(imageSize)/\(identifier).png")
-//        cell.avatarImage.af_setImage(withURL: avatarURL!)
-//        cell.avatarImage.layer.cornerRadius = cell.avatarImage.frame.height / 2
-//        cell.avatarImage.clipsToBounds = true
 
         return cell
     }
-    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

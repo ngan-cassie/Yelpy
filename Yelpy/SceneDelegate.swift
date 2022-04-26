@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,6 +23,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print("Log in notification received")
             self.login()
         }
+        // Add User persistance across app restarts
+        if PFUser.current() != nil {
+            login()
+        }
+
+    // Add event listener for when user logs out
+        NotificationCenter.default.addObserver(forName: Notification.Name("didLogout"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("Logout notification received")
+            // Load and show Login view controller
+            self.logOut()
+        }
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     
@@ -29,6 +41,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         // view controller currently being set in Storyboard as default will be overriden
         window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "TabBar")
+    }
+    
+    func logOut() {
+        PFUser.logOutInBackground(block: {
+            (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("logged out successfully")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "Login")
+            }
+        })
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
