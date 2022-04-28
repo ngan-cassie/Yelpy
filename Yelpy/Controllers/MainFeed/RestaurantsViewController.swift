@@ -32,7 +32,7 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Search Bar delegate
         searchBar.delegate = self
-    
+        definesPresentationContext = true
         
         // Get Data from API
         getAPIData()
