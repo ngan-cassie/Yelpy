@@ -29,7 +29,7 @@ class PostImageViewController: UIViewController, UIImagePickerControllerDelegate
     
     // Unwind back to Restaurant Detail after uploading image
     @IBAction func onFinishPosting(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToDetail", sender: self)
+        // performSegue(withIdentifier: "unwindToDetail", sender: self)
         delegate.imageSelected(controller: self, image: self.selectedImageView.image!)
     }
     

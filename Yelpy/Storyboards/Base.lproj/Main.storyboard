@@ -129,7 +129,7 @@
                                             <outlet property="restaurantImage" destination="lPm-hs-plm" id="0CP-Id-HCS"/>
                                             <outlet property="reviewsLabel" destination="sFe-Sy-g1c" id="PPL-3y-me4"/>
                                             <outlet property="starsImage" destination="7Xv-nd-Qpx" id="Kg0-Da-2Do"/>
-                                            <segue destination="0n5-bX-7UJ" kind="showDetail" id="IAP-pG-lxg"/>
+                                            <segue destination="0n5-bX-7UJ" kind="showDetail" identifier="showDetail" id="IAP-pG-lxg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -476,7 +476,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onFinishPosting:" destination="ikk-6X-xFx" eventType="touchUpInside" id="Oa2-zM-xpD"/>
-                                    <segue destination="W0L-gH-oLX" kind="unwind" identifier="unwindToDetail" unwindAction="unwindToDetailWithSegue:" id="nAR-uh-aJT"/>
+                                    <segue destination="W0L-gH-oLX" kind="unwind" identifier="unwindToDetail" unwindAction="unwindToDetail:" id="nAR-uh-aJT"/>
                                 </connections>
                             </button>
                         </subviews>

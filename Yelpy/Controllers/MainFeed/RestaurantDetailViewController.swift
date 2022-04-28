@@ -117,7 +117,5 @@ class RestaurantDetailViewController: UIViewController, MKMapViewDelegate, PostI
        
         self.annotationView?.leftCalloutAccessoryView = annotationViewButton
 }
-    @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
-        print("Unwind to Restaurant Detail View Controller")
-    }
+    @IBAction func unwindToDetail(_ unwindSegue: UIStoryboardSegue) {}
 }
